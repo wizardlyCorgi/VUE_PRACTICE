@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初识VUE</title>
+    <!-- 引入vue.js之后,页面中就会有Vue这个函数/对象 -->
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 创建一个容器来搭载Vue实例 -->
+    <div id="app">
+      <h1>hello,{{name}}</h1>
+      <button @click="toHappy(55,$event)">点击去快乐</button>
+    </div>
+    <script>
+      Vue.config.productionTip = false // 阻止 vue 在启动时生成生产提示
+      // Vue.config.devtools = false // 阻止 vue 在启动时生成devtools提示
+      // 创建Vue实例
+      new Vue({
+        // 关联容器,让Vue实例与容器连接起来
+        //另外一种写法,手动去寻找  el: document.getElementById('app'),
+        el: '#app',
+        data: {
+          name: '开心'
+        },
+        methods: {
+          toHappy (a, b, c) {
+            alert('I am Happy')
+            console.log(a, b, c)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据代理</title>
+    <!-- 引入vue.js之后,页面中就会有Vue这个函数/对象 -->
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 创建一个容器来搭载Vue实例 -->
+    <div id="app">
+      <h1>hello,{{name}}</h1>
+    </div>
+    <script>
+      let obj = {
+        name: 'xiaoMing',
+        // age:18,
+        address: '欣欣'
+      }
+      Vue.config.productionTip = false // 阻止 vue 在启动时生成生产提示
+      // Vue.config.devtools = false // 阻止 vue 在启动时生成devtools提示
+      // 创建Vue实例
+      new Vue({
+        // 关联容器,让Vue实例与容器连接起来
+        //另外一种写法,手动去寻找  el: document.getElementById('app'),
+        el: '#app',
+        data: {
+          name: 'world'
+        }
+      })
+      // 给一个对象设置一个属性(定义define属性property)
+      Object.defineProperty(obj, 'name', {
+        // value要设置的值,默认是undefined
+        // value: '18',
+        // 是否可删除配置
+        // configurable: true
+        // 是否可以枚举
+        // enumerable: true,
+        // 是否可以修改
+        // writable: true
+        get () {
+          console.log('我被访问了')
+          obj.name = '小红'
+        },
+        set (newVal) {
+          console.log(newVal)
+        }
+      })
+      console.log(obj)
+      console.log(Object.keys(obj))
+    </script>
+  </body>
+</html>
