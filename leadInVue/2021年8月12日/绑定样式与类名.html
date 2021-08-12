@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>绑定样式与类名</title>
+    <!-- 引入vue.js之后,页面中就会有Vue这个函数/对象 -->
+    <script src="../js/vue.js"></script>
+    <style>
+      .basic {
+        height: 200px;
+        width: 200px;
+        border: 1px solid black;
+      }
+      .a {
+        color: red;
+        font-size: 30px;
+      }
+      .b {
+        border-radius: 20px;
+      }
+      .c {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 创建一个容器来搭载Vue实例 -->
+    <div id="app">
+      <h1>hello,{{name}}</h1>
+      <!-- 绑定class--字符串写法  适用场景: 类名不确定,要动态获取,单个类名-->
+      <div class="basic" :class="status">我是测试数据</div>
+      <!-- 绑定class--数组写法  适用场景: 类名的个数不确定,名字不确定-->
+      <div class="basic" :class="classArr">我是测试数据</div>
+      <!-- 绑定class--对象写法 适用场景: 类名的个数确定,名字确定,用不用不确定(对象布尔值控制)-->
+      <div class="basic" :class="classObj">我是测试数据</div>
+      <!-- style--对象写法 适用场景: 单个动态设置样式的值,样式的键名需要驼峰而且不能写错-->
+      <div class="basic" :style="styleObj">我是测试数据</div>
+      <!-- style--数组写法 适用场景: 多个单个动态设置样式的值-->
+      <div class="basic" :style="styleArr">我是测试数据</div>
+    </div>
+    <script>
+      Vue.config.productionTip = false // 阻止 vue 在启动时生成生产提示
+      // Vue.config.devtools = false // 阻止 vue 在启动时生成devtools提示
+      // 创建Vue实例
+      new Vue({
+        // 关联容器,让Vue实例与容器连接起来
+        //另外一种写法,手动去寻找  el: document.getElementById('app'),
+        el: '#app',
+        data: {
+          name: 'world',
+          status: 'a',
+          classArr: ['a', 'b', 'c'],
+          classObj: {
+            a: false,
+            b: true,
+            c: false
+          },
+          styleObj: {
+            fontSize: '50px'
+          },
+          styleArr: [{ fontSize: '50px' }, { backgroundColor: 'gold' }]
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>列表过滤</title>
+    <!-- 引入vue.js之后,页面中就会有Vue这个函数/对象 -->
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 创建一个容器来搭载Vue实例 -->
+    <div id="app">
+      <h1>hello,{{name}}</h1>
+      <input type="text" placeholder="请输入名字" v-model="keyWord" />
+      <button @click="type=2">年龄升序</button>
+      <button @click="type=1">年龄降序</button>
+      <button @click="type=0">原顺序</button>
+      <ul>
+        <li v-for="item in filterArr">
+          {{item.name}}-{{item.age}}-{{item.sex}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      Vue.config.productionTip = false // 阻止 vue 在启动时生成生产提示
+      // Vue.config.devtools = false // 阻止 vue 在启动时生成devtools提示
+      // 创建Vue实例
+      new Vue({
+        // 关联容器,让Vue实例与容器连接起来
+        //另外一种写法,手动去寻找  el: document.getElementById('app'),
+        el: '#app',
+        data: {
+          name: '人员名单',
+          persons: [
+            { id: '001', name: '马冬梅', age: 19, sex: '女' },
+            { id: '002', name: '周冬雨', age: 20, sex: '女' },
+            { id: '003', name: '周杰伦', age: 21, sex: '男' },
+            { id: '004', name: '温兆伦', age: 22, sex: '男' }
+          ],
+          keyWord: '',
+          type: '0' // 0表示原顺序 1 表示降序 2 表示升序
+          // filterArr: [] // 监听的时候使用
+        },
+        // watch: {
+        //   keyWord: {
+        //     immediate: true,
+        //     handler (val) {
+        //       const newArr = this.persons.filter(item => {
+        //         return item.name.indexOf(val) !== -1
+        //       })
+        //       this.filterArr = newArr
+        //     }
+        //   }
+        // }
+        computed: {
+          filterArr () {
+            // 先过滤(filter不改变数组,需要return)
+            const newArr = this.persons.filter(item => {
+              return (
+                item.name.indexOf(this.keyWord) !== -1 ||
+                item.sex.indexOf(this.keyWord) !== -1
+              )
+            })
+            // 在排序(sort排序方法会改变数组,需要return)
+            // a-b是从小到大 升序
+            // b-a是从大到小 降序
+            newArr.sort((p1, p2) => {
+              return this.type === 1 ? p2.age - p1.age : p1.age - p2.age
+            })
+            return newArr
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
