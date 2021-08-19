@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue中监测数据</title>
+    <!-- 引入vue.js之后,页面中就会有Vue这个函数/对象 -->
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 创建一个容器来搭载Vue实例 -->
+    <div id="app">
+      <h1>hello,{{name}}</h1>
+      <button @click="changeSex">修改性别</button>
+      <button @click="changeSex1">修改性别</button>
+      <div>{{persons.name}}-{{persons.age}}-{{persons.sex}}-{{persons.id}}</div>
+      <ul>
+        <li v-for="(item,index) in people" :key="index">
+          {{item.name}}-{{item.age}}_{{item.sex}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      Vue.config.productionTip = false // 阻止 vue 在启动时生成生产提示
+      // Vue.config.devtools = false // 阻止 vue 在启动时生成devtools提示
+      // 创建Vue实例
+      const vm = new Vue({
+        // 关联容器,让Vue实例与容器连接起来
+        //另外一种写法,手动去寻找  el: document.getElementById('app'),
+        el: '#app',
+        data: {
+          name: 'world',
+          persons: {
+            name: '小明',
+            age: 18,
+            sex: '男'
+          },
+          people: [
+            {
+              name: '小红',
+              age: 19,
+              sex: '女'
+            },
+            {
+              name: '小绿',
+              age: 20,
+              sex: '男'
+            },
+            {
+              name: '小吕',
+              age: 21,
+              sex: '男'
+            }
+          ]
+        },
+        methods: {
+          changeSex () {
+            this.persons.sex = 'nv'
+            // this.$set(this.persons, 'id', '001')
+            this.persons.id = '001'
+            console.log(this.persons)
+            // console.log(this.persons.sex)
+            this.people[0].name = '还是说'
+            console.log(this.people)
+          },
+          changeSex1 () {
+            // this.$set(this.persons, 'id', '002')
+            this.persons.id = '002'
+            console.log(111)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
