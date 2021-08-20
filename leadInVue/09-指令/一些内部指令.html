@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{name}}</h1>
+      <h1 v-big="name"></h1>
+      <h1 v-small="name"></h1>
+      <button @click="name++">点击加一</button>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        name: 1
+      },
+      directives: {
+        big (e, b) {
+          console.log(e)
+          console.log(b)
+          e.innerText = b.value * 10
+        },
+        small: {
+          bind (e, b) {
+            console.log(e)
+            console.log(b, 'bind')
+            e.innerText = b.value * 20
+          },
+          inserted (e, b) {
+            console.log(e)
+            console.log(b, 'inserted')
+          },
+          update (e, b) {
+            console.log(e)
+            console.log(b, 'update')
+            e.innerText = b.value * 20
+          }
+        }
+      }
+    })
+  </script>
+</html>

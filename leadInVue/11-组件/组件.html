@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/vue.js"></script>
+    <title>组件</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{name}}</h1>
+      <app></app>
+      <son1></son1>
+    </div>
+    <div id="root">
+      <h1>{{name}}</h1>
+      <son1></son1>
+    </div>
+  </body>
+  <script>
+    Vue.config.productionTip = false // 阻止 vue 在启动时生成生产提示
+
+    // 组件嵌套
+    const grandson = Vue.extend({
+      template: `<div>
+          <h1>{{grandsonName}}</h1>
+          </div>`,
+      data () {
+        return {
+          grandsonName: '我是孙组件'
+        }
+      }
+    })
+    // 局部子组件
+    const son = Vue.extend({
+      template: `<div>
+          <h1>{{sonName}}</h1>
+          <grandson />
+          </div>`,
+      data () {
+        return {
+          sonName: '我是子组件'
+        }
+      },
+      components: {
+        grandson
+      }
+    })
+    // 组件嵌套 app
+    const app = Vue.extend({
+      template: `<div>
+          <h1>{{appName}}</h1>
+          <son/>
+          </div>`,
+      data () {
+        return {
+          appName: '我是容器组件'
+        }
+      },
+      components: {
+        son
+      }
+    })
+    // 全局子组件
+    Vue.component('son1', {
+      template: `<div>
+          <h1>{{sonName}}</h1>
+          </div>`,
+      data () {
+        return {
+          sonName: '我是子组件1'
+        }
+      }
+    })
+    new Vue({
+      el: '#app',
+      data: {
+        name: '我是父组件'
+      },
+      components: {
+        app
+      }
+    })
+    new Vue({
+      el: '#root',
+      data: {
+        name: '我是父组件1'
+      }
+    })
+  </script>
+</html>
