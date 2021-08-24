@@ -14,7 +14,7 @@
 <script>
 export default {
   name: 'TodoListFooter',
-  props: ['todos', 'setIsAll', 'clearItem'],
+  props: ['todos'],
   computed: {
     doneTotal () {
       // reduce 第一个参数是一个回调函数,第二个参数是统计的初始值
@@ -36,13 +36,13 @@ export default {
       },
       set (value) {
         // 把数据中的done全部赋值
-        this.setIsAll(value)
+        this.$emit('setIsAll', value)
       }
     }
   },
   methods: {
     clearTask () {
-      this.clearItem()
+      this.$emit('clearItem')
     }
   }
 }

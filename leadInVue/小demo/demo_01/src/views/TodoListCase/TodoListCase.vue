@@ -1,15 +1,12 @@
 <template>
   <div class="todoListCase">
-    <TodoListHeader :add="addTask"></TodoListHeader>
-    <TodoListContent
-      :todos="todos"
-      :isCheck="isCheck"
-      :deleteItem="deleteItem"
-    ></TodoListContent>
+    <!-- @add 自定义事件 用于子传父 -->
+    <TodoListHeader @add="addTask"></TodoListHeader>
+    <TodoListContent :todos="todos"></TodoListContent>
     <TodoListFooter
       :todos="todos"
-      :setIsAll="setIsAll"
-      :clearItem="clearItem"
+      @setIsAll="setIsAll"
+      @clearItem="clearItem"
     ></TodoListFooter>
   </div>
 </template>
@@ -40,8 +37,13 @@ export default {
       todos: JSON.parse(localStorage.getItem('todos')) || []
     }
   },
+  mounted () {
+    // 自定义事件 参数('事件名称',回调函数)
+    this.$bus.$on('isCheck', this.isCheck)
+    this.$bus.$on('deleteItem', this.deleteItem)
+  },
   methods: {
-    // 添加任务
+    // 添加任务(自定义事件的回调)
     addTask (n) {
       // 调用nanoid前端库生成随机Id
       const taskItem = {
@@ -75,6 +77,10 @@ export default {
     clearItem () {
       this.todos = this.todos.filter(item => !item.done)
     }
+  },
+  beforeDestroy () {
+    this.$bus.$off('isCheck')
+    this.$bus.$off('deleteItem')
   }
 }
 </script>

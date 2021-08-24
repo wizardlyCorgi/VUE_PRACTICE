@@ -8,9 +8,13 @@ Vue.config.productionTip = false
 
 // 创建一个Vue实例对象
 new Vue({
-  render: h => h(App)
+  render: h => h(App),
+  // 挂载全局变量
+  beforeCreate () {
+    Vue.prototype.$bus = this
+  }
 }).$mount('#app')
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+// new Vue({
+//   el: '#app',
+//   render: h => h(App)
+// })

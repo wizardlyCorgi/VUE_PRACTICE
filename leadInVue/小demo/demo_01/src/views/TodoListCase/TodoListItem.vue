@@ -19,15 +19,15 @@
 <script>
 export default {
   name: 'TodoListItem',
-  props: ['todoItm', 'isCheck', 'deleteItem'],
+  props: ['todoItm'],
   created () {},
   methods: {
     isChecked (id) {
-      this.isCheck(id)
+      this.$bus.$emit('isCheck', id)
     },
     deleteTask (id) {
       if (confirm('你确定要删除吗?')) {
-        this.deleteItem(id)
+        this.$bus.$emit('deleteItem', id)
       }
     }
   }

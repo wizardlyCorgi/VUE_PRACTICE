@@ -1,13 +1,7 @@
 <template>
   <div class="content">
     <!-- 我是中间内容 -->
-    <TodoListItem
-      v-for="item in todos"
-      :key="item.id"
-      :todoItm="item"
-      :isCheck="isCheck"
-      :deleteItem="deleteItem"
-    />
+    <TodoListItem v-for="item in todos" :key="item.id" :todoItm="item" />
   </div>
 </template>
 
@@ -18,7 +12,7 @@ export default {
   components: {
     TodoListItem
   },
-  props: ['todos', 'isCheck', 'deleteItem']
+  props: ['todos']
 }
 </script>
 

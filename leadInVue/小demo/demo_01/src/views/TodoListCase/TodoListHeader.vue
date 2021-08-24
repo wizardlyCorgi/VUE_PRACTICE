@@ -12,7 +12,7 @@
 <script>
 export default {
   name: 'TodoListHeader',
-  props: ['add'],
+  // props: ['add'],
   data () {
     return {
       placeholderText: '请输入你的任务名称,按回车键确认'
@@ -22,7 +22,7 @@ export default {
     addTask (e) {
       const value = e.target.value.trim()
       if (!value) return
-      this.add(value)
+      this.$emit('add', value)
       e.target.value = ''
     }
   }
