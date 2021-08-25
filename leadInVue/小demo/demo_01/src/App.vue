@@ -2,19 +2,22 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <GithubCase />
+    <!-- <GithubCase /> -->
+    <List />
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import GithubCase from './views/GithubCase.vue'
+// import GithubCase from './views/GithubCase.vue'
+import List from './views/List'
 
 export default {
   name: 'App',
   components: {
     // HelloWorld
-    GithubCase
+    // GithubCase
+    List
   }
 }
 </script>
