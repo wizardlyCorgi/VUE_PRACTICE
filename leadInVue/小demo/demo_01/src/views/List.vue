@@ -1,39 +1,38 @@
 <template>
-  <div class="list">
-    <Item :title="'游戏'">
-      <template slot-scope="{ games }">
-        <ul>
-          <li v-for="item in games" :key="item">
-            {{ item }}
-          </li>
-        </ul>
-      </template>
-      <!-- 具名插槽 -->
-      <!-- <template slot="big">
-        <h1>我来占坑</h1>
-        <h1>我来占坑</h1>
-      </template> -->
-      <!-- 具名插槽可以追加 -->
-      <!-- <h1 slot="big">我来占坑11</h1>
-      <h1 slot="big">我也来</h1> -->
-      <!-- <h1 slot="small">我也来</h1> -->
-    </Item>
+  <div>
+    <h1>当前求和为：{{ $store.state.sum }}</h1>
+    <select v-model.number="n">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+    <button @click="incrementOdd">当前求和为奇数再加</button>
+    <button @click="incrementWait">等一等再加</button>
   </div>
 </template>
 
 <script>
-import Item from './ListItem.vue'
 export default {
   name: 'List',
-  components: {
-    Item
-  },
   data () {
     return {
-      //   games: ['英雄联盟', '地下城与勇士', 'QQ三国', '梦幻西游', '...'],
-      //   foods: ['炸鸡', '烧烤', '奶茶', '火锅', '...'],
-      //   films: ['中国医生', '扫黑风暴', '我爱我的祖国', '傲慢与偏见', '...']
+      n: 1
     }
+  },
+  methods: {
+    increment () {
+      // 触发actions方法
+      // this.$store.dispatch('summation', this.n)
+      // 如果actions中的逻辑不是很复杂,可以直接触发mutations的方法,越过actions
+      this.$store.commit('SUMMATION', this.n)
+    },
+    decrement () {
+      this.$store.dispatch('subtract', this.n)
+    },
+    incrementOdd () {},
+    incrementWait () {}
   }
 }
 </script>
@@ -42,5 +41,8 @@ export default {
 .list {
   display: flex;
   justify-content: space-around;
+}
+button {
+  margin-left: 10px;
 }
 </style>
