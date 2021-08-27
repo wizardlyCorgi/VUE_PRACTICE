@@ -6,6 +6,7 @@
       <option value="2">2</option>
       <option value="3">3</option>
     </select>
+    <button @click="bb">测试</button>
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
     <button @click="incrementOdd">当前求和为奇数再加</button>
@@ -32,7 +33,11 @@ export default {
       this.$store.dispatch('subtract', this.n)
     },
     incrementOdd () {},
-    incrementWait () {}
+    incrementWait () {},
+    bb () {
+      // console.log(11)
+      this.$emit('aa', false, 11)
+    }
   }
 }
 </script>
