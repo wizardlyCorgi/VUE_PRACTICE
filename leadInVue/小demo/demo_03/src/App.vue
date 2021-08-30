@@ -2,20 +2,21 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <Father></Father>
+    <!-- <Father></Father> -->
+    <RouterTest></RouterTest>
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import Father from './views/VuexPactice/Father.vue'
-Father
+// import Father from './views/VuexPactice/Father.vue'
+import RouterTest from './views/RouterTest'
 
 export default {
   name: 'App',
   components: {
     // HelloWorld,
-    Father
+    RouterTest
   }
 }
 </script>
