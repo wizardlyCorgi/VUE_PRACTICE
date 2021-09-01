@@ -8,6 +8,7 @@
         <button @click="push">跳转路由</button>
         <button @click="parmas">跳转路由parmas</button>
         <button @click="$router.go(-2)">后退二步</button>
+        <button @click="getData">获取数据</button>
       </div>
     </div>
     <div class="row">
@@ -35,6 +36,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'RouterTest',
   mounted () {
@@ -67,6 +69,12 @@ export default {
         //   id: '001',
         //   message: 'hello'
         // }
+      })
+    },
+    getData () {
+      console.log()
+      axios.get(`${process.env.VUE_APP_PROXY_URL}/person`).then(res => {
+        console.log(res)
       })
     }
   }
