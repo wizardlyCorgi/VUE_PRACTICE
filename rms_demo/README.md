@@ -43,3 +43,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # 坑点
 <!-- 2021年9月1日17:16:20 -->
 1. element-ui局部引入需要配置babel,配置完要重启脚手架,不然样式无效
+2. css解决高度自适应问题（使用flex） 需要给父盒子设置高度为100vh,设置100%无效,计算出来的高度为0(菜单栏高度不能自适应)
+# 有待思考的最佳实现
+1. base.css文件的位置((1)放在public文件夹中,在index.html中引入(2)放在assets文件夹中,App.vue中import引入)
