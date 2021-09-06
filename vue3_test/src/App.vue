@@ -1,17 +1,23 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-  <Test3 />
+  <!-- <Test3 /> -->
+  <!-- <ComputedTest></ComputedTest> -->
+  <WatchTest></WatchTest>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import Test3 from './components/Test3.vue'
+// import Test3 from './components/Test3.vue'
+// import ComputedTest from './components/ComputedTest.vue'
+import WatchTest from './components/WatchTest.vue'
 
 export default {
   name: 'App',
   components: {
-    Test3
+    // Test3,
+    // ComputedTest,
+    WatchTest
     // HelloWorld
   }
 }
