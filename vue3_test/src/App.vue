@@ -3,21 +3,27 @@
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   <!-- <Test3 /> -->
   <!-- <ComputedTest></ComputedTest> -->
-  <WatchTest></WatchTest>
+  <!-- <WatchTest></WatchTest> -->
+  <OtherTest></OtherTest>
+  <Father></Father>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import Test3 from './components/Test3.vue'
 // import ComputedTest from './components/ComputedTest.vue'
-import WatchTest from './components/WatchTest.vue'
+// import WatchTest from './components/WatchTest.vue'
+import OtherTest from './components/OtherTest.vue'
+import Father from './components/Father.vue'
 
 export default {
   name: 'App',
   components: {
+    OtherTest,
+    Father
     // Test3,
     // ComputedTest,
-    WatchTest
+    // WatchTest
     // HelloWorld
   }
 }

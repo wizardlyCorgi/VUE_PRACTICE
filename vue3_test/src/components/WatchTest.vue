@@ -7,6 +7,7 @@
   <h1>当前的信息是:{{ msg }}</h1>
   <button @click="msg += '!'">点击修改信息</button>
   <hr />
+  <button @click="test111">哈哈哈哈</button>
   <div>
     <h1>姓名:{{ person }}</h1>
     <h1>姓名:{{ name }}</h1>
@@ -19,13 +20,27 @@
 </template>
 
 <script>
-import { ref, reactive, watchEffect, onMounted, toRefs, toRef } from 'vue'
+import {
+  ref,
+  watchEffect,
+  onMounted,
+  toRefs,
+  toRef,
+  // shallowReactive,
+  reactive
+  //   shallowRef
+} from 'vue'
 export default {
-  setup () {
+  setup (prop, context) {
+    console.log(prop, 25)
+    console.log(context, 26)
     // 数据
     let sum = ref(0)
     let msg = ref('你好鸭')
+    // shallowReactive只对第一层的属性有响应式处理,深层次的没有响应式
+    // shallowRef只对基本数据类型的响应式,不对对象进行响应式处理
     let person = reactive({
+      // let person = shallowRef({
       name: '张三',
       age: 19,
       job: {
