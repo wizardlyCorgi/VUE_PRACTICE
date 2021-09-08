@@ -4,13 +4,16 @@
   <!-- <Test3 /> -->
   <!-- <ComputedTest></ComputedTest> -->
   <!-- <WatchTest></WatchTest> -->
-  <OtherTest></OtherTest>
-  <Father></Father>
+  <div>
+    <Test3></Test3>
+    <OtherTest></OtherTest>
+    <Father></Father>
+  </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-// import Test3 from './components/Test3.vue'
+import Test3 from './components/Test3.vue'
 // import ComputedTest from './components/ComputedTest.vue'
 // import WatchTest from './components/WatchTest.vue'
 import OtherTest from './components/OtherTest.vue'
@@ -20,8 +23,8 @@ export default {
   name: 'App',
   components: {
     OtherTest,
-    Father
-    // Test3,
+    Father,
+    Test3
     // ComputedTest,
     // WatchTest
     // HelloWorld

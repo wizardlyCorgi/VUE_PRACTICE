@@ -4,6 +4,8 @@
   <h2>年龄:{{ age }}</h2>
   <h2>性别:{{ sex }}</h2>
   <h2>工作:{{ obj.type }}</h2>
+  <h2>工作:{{ obj.salary }}K</h2>
+  <h2>工作:{{ job.salary }}K</h2>
   <h4>{{ num }}</h4>
   <button @click="add">点我加一</button>
 </template>
@@ -19,7 +21,7 @@ export default {
     let sex = ref('男')
     let job = ref({
       type: '前端工程师',
-      salary: '30K'
+      salary: 20
     })
     const obj = reactive({
       type: '前端工程师',
@@ -33,7 +35,8 @@ export default {
       // num.value++
       console.log(job.value)
       // job.value.type = 'UI工程师'
-      obj.type = 'UI工程师'
+      // obj.type = 'UI工程师'
+      job.value.salary++
     }
 
     return {
