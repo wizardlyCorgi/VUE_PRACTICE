@@ -72,7 +72,7 @@ export default {
       })
     },
     getData () {
-      console.log()
+      console.log(process.env)
       axios.get(`${process.env.VUE_APP_PROXY_URL}/person`).then(res => {
         console.log(res)
       })
