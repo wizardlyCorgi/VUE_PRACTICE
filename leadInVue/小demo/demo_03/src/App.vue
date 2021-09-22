@@ -36,18 +36,51 @@
 // import HelloWorld from './components/HelloWorld.vue'
 // import Father from './views/VuexPactice/Father.vue'
 import RouterTest from './views/RouterTest'
-
+import { getListAPI } from './services/api'
+// import axios from 'axios'
 export default {
   name: 'App',
   components: {
     // HelloWorld,
     RouterTest
   },
+  created () {
+    // this.mockData()
+    // this.mockApiData()
+  },
+  mounted () {
+    this.mockApiData()
+  },
   data () {
     return {
       checkList: '',
       checkboxGroup1: ['上海'],
       cities: ['上海', '北京', '广州', '深圳']
+    }
+  },
+  methods: {
+    mockData () {
+      console.log(data2)
+      console.log(data)
+      // 输出结果
+      console.log(JSON.stringify(data, null, 4))
+    },
+    mockApiData () {
+      getListAPI()
+        .then(res => {
+          console.log(res, 'res')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      // axios
+      //   .get('http://localhost:8081/mockApi/mode2/DataOne')
+      //   .then(res => {
+      //     console.log(res)
+      //   })
+      //   .catch(err => {
+      //     console.log(err)
+      //   })
     }
   }
 }

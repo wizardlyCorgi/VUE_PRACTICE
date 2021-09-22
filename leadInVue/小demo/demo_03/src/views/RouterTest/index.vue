@@ -73,9 +73,15 @@ export default {
     },
     getData () {
       console.log(process.env)
-      axios.get(`${process.env.VUE_APP_PROXY_URL}/person`).then(res => {
-        console.log(res)
-      })
+      axios
+        .get(`${process.env.VUE_APP_PROXY_URL}/api/person`) //多个代理区分加/api标识,在vue.config.js中设置
+        // .get(`${process.env.VUE_APP_PROXY_URL}/person`)//一个代理则不需要直接写就好
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 }
