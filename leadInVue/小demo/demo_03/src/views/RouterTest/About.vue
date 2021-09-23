@@ -38,7 +38,7 @@ export default {
       console.log(binding)
     },
     big: {
-      binding (element, binding) {}
+      // binding (element, binding) {}
     }
   }
 }

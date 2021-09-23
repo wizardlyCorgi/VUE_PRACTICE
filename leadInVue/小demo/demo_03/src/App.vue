@@ -3,8 +3,9 @@
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <Father></Father> -->
-    <RouterTest></RouterTest>
-    <el-button>默认按钮</el-button>
+    <!-- <RouterTest></RouterTest> -->
+    <Test1></Test1>
+    <!-- <el-button>默认按钮</el-button>
     <el-button type="primary">主要按钮</el-button>
     <el-button type="success">成功按钮</el-button>
     <el-button type="info">信息按钮</el-button>
@@ -28,21 +29,23 @@
       <el-checkbox-button v-for="city in cities" :label="city" :key="city">{{
         city
       }}</el-checkbox-button>
-    </el-checkbox-group>
+    </el-checkbox-group> -->
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import Father from './views/VuexPactice/Father.vue'
-import RouterTest from './views/RouterTest'
+// import RouterTest from './views/RouterTest'
+import Test1 from './views/test1.vue'
 import { getListAPI } from './services/api'
 // import axios from 'axios'
 export default {
   name: 'App',
   components: {
     // HelloWorld,
-    RouterTest
+    // RouterTest
+    Test1
   },
   created () {
     // this.mockData()
@@ -60,10 +63,10 @@ export default {
   },
   methods: {
     mockData () {
-      console.log(data2)
-      console.log(data)
+      // console.log(data2)
+      // console.log(data)
       // 输出结果
-      console.log(JSON.stringify(data, null, 4))
+      // console.log(JSON.stringify(data, null, 4))
     },
     mockApiData () {
       getListAPI()

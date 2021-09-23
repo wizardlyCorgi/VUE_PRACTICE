@@ -31,6 +31,8 @@ export default {
     personsBigSum (state) {
       return state.personsSum * 10
     }
+    // ES6简写形式
+    // personsBigSum:state=>state.personsSum * 10
   },
   state: {
     persons: [
