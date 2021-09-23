@@ -9,6 +9,12 @@ let app = express() //实例化express
 //   res.header('Access-Control-Allow-Headers', 'Content-Type')
 //   next()
 // })
+app.use((request, response, next) => {
+  console.log('有人请求服务器1了')
+  console.log('请求来自于', request.get('Host'))
+  console.log('请求的地址', request.url)
+  next()
+})
 
 app.use('/mode2/DataOne', function (req, res) {
   res.json(
@@ -31,6 +37,7 @@ app.use('/mode2/DataOne', function (req, res) {
     })
   )
 })
+console.log()
 
 console.log('有人')
 
