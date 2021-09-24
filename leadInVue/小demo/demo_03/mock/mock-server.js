@@ -1,6 +1,5 @@
 let express = require('express') //引入express
 let Mock = require('mockjs') //引入mock
-
 let app = express() //实例化express
 // app.use(function (req, res, next) {
 //   res.header('Access-Control-Allow-Origin', '*')
@@ -16,7 +15,7 @@ app.use((request, response, next) => {
   next()
 })
 
-app.use('/mode2/DataOne', function (req, res) {
+app.post('/mode2/DataOne', function (req, res) {
   res.json(
     Mock.mock({
       status: 200,

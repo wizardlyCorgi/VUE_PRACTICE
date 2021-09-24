@@ -9,7 +9,7 @@ let request = '/testIp/request/'
 
 // get请求
 export function getListAPI (params) {
-  return http.get('/mode2/DataOne', params)
+  return http.post('/mode2/DataOne', params)
 }
 // post请求
 export function postFormAPI (params) {
