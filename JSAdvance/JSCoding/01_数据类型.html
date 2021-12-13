@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    1. 分类(2大类)
+        *基本类型(值)类型
+            * Number : 任意数字
+            * String : 任意字符串
+            * Boolean : true/false
+            * undefined : undefined (表示未定义)
+            * null : null (表示不存在, 空, 还常用于赋值变量进入垃圾回收机制)
+        *对象(引用)类型(对象的功能是来存储数据)
+            * Object : 任意对象
+            * Array : 特别的对象类型(数值下标/内部数据有序)
+            * Function : 特别的对象类型(可执行调用)内部存储的是可执行的代码
+    2. 判断
+        * typeof(关键字): 返回的是数据类型的字符串表达式('undefined','null','number','string','boolean','object')
+            * 可以区别 : 数值,字符串,布尔值,undefined,function
+            * 不能区别 : object,数组,null,都会判断为'object'
+        * instanceof(/ins dens/中文为实例的意思)
+            *专门用于判断对象的具体类型,不能用于判断数据的基本类型
+        * === (1,值与值的类型都相等==>全等 2,不会做数据类型转化(==会做数据类型转化))
+    3. 应用
+        * 实际应用中需要知道你遇到的是什么类型的数据,再来进行下一步的数据操作
+        * 需要记住特别的 不能区别的
+     -->
+
+    <script type="text/javascript">
+      // typeof关键字: 返回的是数据类型的字符串表达式
+      // 1. 基本类型
+      let a
+      console.log(a, typeof a, a === undefined, 'a的类型') // undefined "undefined" true
+      let b = 3
+      console.log(b, typeof b, 'b的类型') // 3 "number"
+      let c = '我是字符串'
+      console.log(c, typeof c, 'c的类型') // "我是字符串" "string"
+      let d = true
+      console.log(d, typeof d, 'd的类型') // true "boolean"
+      let e = null
+      console.log(e, typeof e, typeof e === null, 'e的类型') // null "object" false
+      // 2. 对象类型
+      let a1 = { b: 2 }
+      console.log(a1, typeof a1, 'a1的类型') // {b: 2} "object"
+      let b1 = [1, 2, 3, 4]
+      console.log(b1, typeof b1, 'b1的类型') // (4) [1, 2, 3, 4] "object"
+      let c1 = function () {
+        return 5
+      }
+      console.log(c1, typeof c1, 'c1的类型') // ƒ () {return 5} "function"
+      console.log(c1())
+      console.log(
+        a1 instanceof Object,
+        b1 instanceof Array,
+        c1 instanceof Function
+      ) // true true true
+    </script>
+  </body>
+</html>
